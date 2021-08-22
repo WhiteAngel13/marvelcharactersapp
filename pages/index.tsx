@@ -1,30 +1,34 @@
 import { GetServerSideProps } from "next"
-import { 
-  Sidebar, 
-  AplicationArea,
-  BackgroundAnimation,
-  Character,
-  ConfigureScreen,
-  Selector,
-} from "../components/HomeAplication"
+import { BackgroundImageAnimation } from "../components/HomeAplication/BackgroundImageAnimation"
+import { ContentApplication } from "../components/HomeAplication/ContentApplication"
+import { HomeApplicationArea } from "../components/HomeAplication/HomeApplicationArea"
+import { Sidebar } from "../components/HomeAplication/Sidebar"
+import { MainContent } from "../components/HomeAplication/MainContent"
+import { Slider } from "../components/HomeAplication/MainContent/Slider"
+import { api } from "../services/api"
 
-export default function Home() {
+
+export default function Home({data}) {
 
   return (
-    <ConfigureScreen>
-      <BackgroundAnimation/>
-      <AplicationArea>
-        <Sidebar/>
-        <Character/>
-        <Selector/>
-      </AplicationArea>
-    </ConfigureScreen>
+   <HomeApplicationArea>
+     <BackgroundImageAnimation/>
+     <ContentApplication>
+       <Sidebar/>
+       <MainContent/>
+       <Slider/>
+     </ContentApplication>
+   </HomeApplicationArea>
   )
 }
 
-export const getServerSideProps:GetServerSideProps = async(ctx) => {
+export const getServerSideProps : GetServerSideProps = async(ctx) => {
 
-  return {
-    props: {}
+  const { data } = await api.get("characters")
+
+  console.log(data)
+  
+  return{
+    props:{data}
   }
 }
