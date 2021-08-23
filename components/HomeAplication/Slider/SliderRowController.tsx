@@ -18,7 +18,12 @@ export function SliderRowController({
 }:SliderRowControllerProps){
 
   return(
-    <Center width={`${herosData.length <= 6 ? "100%" : ""}`} transform="auto" transition="all ease 1s" translateX={movementInPx}>
+    <Center 
+      width={`${herosData.length <= 6 ? "100%" : ""}`} 
+      transform="auto" 
+      transition="all ease 1s" 
+      
+      translateX={`${herosData.length > 6 ? movementInPx : ""}`}>
       {
         herosData.map((item, index)=>(
           <SliderCard

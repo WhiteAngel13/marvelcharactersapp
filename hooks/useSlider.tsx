@@ -64,7 +64,7 @@ export function useSlider ({
     moveTo,
     setSliderCardActive,
     SliderCardActive,
-    movementInPx
+    movementInPx,
   }
 
 }

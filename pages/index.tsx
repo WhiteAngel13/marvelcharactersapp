@@ -32,7 +32,6 @@ export default function Home({
 
   return (
    <HomeApplicationArea>
-     <Button bg="red" width="20px" h="20px" zIndex="10" onClick={()=>{setGroupShow("avengers")}} />
      <BackgroundImageAnimation/> 
      <ContentApplication>
        <Sidebar herosGroups={groupsFormatted} setGroup={handleSetGroup} />
