@@ -1,5 +1,5 @@
 import { Center, Flex, HStack } from "@chakra-ui/react";
-import { Slider } from "./Slider";
+import { Slider } from "../Slider";
 
 
 export function MainContent(){
