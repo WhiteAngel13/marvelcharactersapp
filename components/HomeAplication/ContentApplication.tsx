@@ -1,13 +1,17 @@
 import { Flex, } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { Sidebar } from "./Sidebar";
+import { Slider } from "./Slider";
+import { MainContent } from "./MainContent";
+import { HomeHerosType } from "../../types/HomeHerosType";
+import { HomeApplicationProvider } from "../../hooks/HomeApplication";
+import { SliderProvider } from "../../hooks/HomeApplication/SliderController";
 
-interface ContentApplicationProps{
-  children: ReactNode
+interface ContentApplicationProps {
+  herosData: HomeHerosType[]
 }
 
-export function ContentApplication({
-  children
-}:ContentApplicationProps){
+export function ContentApplication({ herosData } : ContentApplicationProps){
 
   return(
     <Flex
@@ -17,7 +21,13 @@ export function ContentApplication({
       left="0"
       bottom="0"
     >
-      {children}
+     <HomeApplicationProvider herosData={herosData}>
+      <SliderProvider>
+        <Sidebar />
+        <Slider />
+        <MainContent />
+      </SliderProvider>
+     </HomeApplicationProvider>
     </Flex>    
   )
 }

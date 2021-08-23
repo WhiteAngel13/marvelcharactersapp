@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useState, Dispatch, SetStateAction, createContext, useContext } from "react";
+import { useHomeApplication } from ".";
 
-interface UseSliderProps {
+interface SliderControllerProps {
   listLength: number
 }
 
-export function useSlider ({
-  listLength
-} : UseSliderProps) {
+interface SliderControllerReturn {
+  moveTo: (move : "left" | "right") => void,
+  setSliderCardActive: Dispatch<SetStateAction<number>>,
+  setSliderInMovement: Dispatch<SetStateAction<number>>,
+  SliderCardActive: number,
+  movementInPx: number
+}
 
+export type SliderController = ({}: SliderControllerProps) => SliderControllerReturn
+
+const SliderContext = createContext({} as SliderControllerReturn)
+
+export const SliderProvider = ({children}) => {
+
+  const {listLength} = useHomeApplication()
   const [SliderInMovement, setSliderInMovement] = useState(0);
   const [SliderCardActive, setSliderCardActive] = useState(0);
 
@@ -60,7 +72,7 @@ export function useSlider ({
 
   const movementInPx = convertToPx(SliderInMovement)
 
-  return {
+  const value =  {
     moveTo,
     setSliderCardActive,
     setSliderInMovement,
@@ -68,4 +80,12 @@ export function useSlider ({
     movementInPx,
   }
 
-}
+  return(
+    <SliderContext.Provider value={value}>
+      {children}
+    </SliderContext.Provider>
+  )
+
+} 
+
+export const useSlider = () => useContext(SliderContext)

@@ -1,14 +1,13 @@
 import { Center, Flex, HStack, Text, Box, Avatar } from "@chakra-ui/react";
+import { useHomeApplication } from "../../../hooks/HomeApplication";
 import { HomeHerosType } from "../../../types/HomeHerosType";
 import { Slider } from "../Slider";
 
-interface MainContentProps {
-  heroData: HomeHerosType;
-}
+export function MainContent(){
 
-export function MainContent({
-  heroData
-}:MainContentProps){
+  const {
+    chosenHeroData: heroData
+  } = useHomeApplication()
 
   return(
     <Flex
@@ -71,10 +70,15 @@ export function MainContent({
 
               color="#ccc"
               alignSelf="flex-start"
+              m="10px"
             >
               Description:
             </Text>
-            <Text>
+            <Text
+              m="10px"
+              fontSize="16px"
+              color="#ccc"
+            >
               {heroData.description}
             </Text>            
           </Flex>
@@ -85,7 +89,7 @@ export function MainContent({
           <Flex mt="10%" flexDir="column" border="#222 solid 10px" borderRadius="10px" h="70%" width="60%" bg="blue">
             <Flex 
               flex="3"
-              bgImage="http://i.annihil.us/u/prod/marvel/i/mg/f/30/50fecad1f395b/portrait_incredible.jpg"
+              bgImage={heroData.thumbnail}
               bgSize="cover"
               bgPos="center"
             />

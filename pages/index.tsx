@@ -2,44 +2,21 @@ import { GetServerSideProps } from "next"
 import { BackgroundImageAnimation } from "../components/HomeAplication/BackgroundImageAnimation"
 import { ContentApplication } from "../components/HomeAplication/ContentApplication"
 import { HomeApplicationArea } from "../components/HomeAplication/HomeApplicationArea"
-import { Sidebar } from "../components/HomeAplication/Sidebar"
-import { MainContent } from "../components/HomeAplication/MainContent"
-import { Slider } from "../components/HomeAplication/Slider"
 import { db } from "../services/firebase"
 import { HomeHerosType } from "../types/HomeHerosType"
-import { NameFormatter } from "../utils/NameFormatter"
-import { useState } from "react"
-import { Button } from "@chakra-ui/react"
-import { GroupsNameFormatter } from "../utils/GroupsNameFormatter"
 
 interface HomeProps {
   herosData : HomeHerosType[];
-  groupsFormatted: string[];
 }
 
 export default function Home({
-  herosData,
-  groupsFormatted
+  herosData
 }:HomeProps) {
-
-  const slugFormattedFirstGroup = groupsFormatted[0].split(" ").join("-")
-
-  const [groupToShow, setGroupShow] = useState(slugFormattedFirstGroup)
-
-  const herosDataFormatted = herosData.filter(hero => hero.group === groupToShow)
-
-  function handleSetGroup( group : string){
-    setGroupShow(group)
-  }
 
   return (
    <HomeApplicationArea>
      <BackgroundImageAnimation/> 
-     <ContentApplication>
-       <Sidebar herosGroups={groupsFormatted} setGroup={handleSetGroup} />
-       <Slider herosData={herosDataFormatted} />
-       <MainContent heroData={herosDataFormatted[0]} />
-     </ContentApplication>
+     <ContentApplication herosData={herosData} />
    </HomeApplicationArea>
   )
 }
@@ -47,30 +24,13 @@ export default function Home({
 export const getServerSideProps : GetServerSideProps = async () => {
 
   const herosData : HomeHerosType[] = [];
-  const allgroupsUnfformated = []
 
   const response = await db.collection("Home_Heros_Data").get()
-  response.forEach(item => {
-    const hero = item.data() as HomeHerosType;
-    
-    if(hero.name.length > 11){
-      hero.nameFormatted = NameFormatter(hero.name);
-    }else{
-      hero.nameFormatted = hero.name
-    }
-
-    allgroupsUnfformated.push(hero.group)
-    herosData.push(hero)
-
-  });
-
-  const groupsFormatted = GroupsNameFormatter(allgroupsUnfformated)
-
+  response.forEach(item => herosData.push(item.data() as HomeHerosType))
 
   return {
     props: {
       herosData,
-      groupsFormatted
     }
   }
 }

@@ -1,21 +1,15 @@
 import { Center, Flex, Box, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { useHomeApplication } from "../../../hooks/HomeApplication";
 import { GroupButton } from "./GroupButton";
 
-interface SidebarProps{
-  herosGroups: string[];
-  setGroup?: (group : string) => void;
-}
+export function Sidebar(){
 
-export function Sidebar({
-  herosGroups,
-  setGroup
-} : SidebarProps){
-
+  const { setGroupToShow, formattedGroups } = useHomeApplication()
   const [activeButton, setActiveButton] = useState(0);
 
   function handleChangeGroup(group: string, index: number){
-    setGroup(group.split(" ").join("-"))
+    setGroupToShow(group)
     setActiveButton(index)
   }
   
@@ -26,7 +20,7 @@ export function Sidebar({
     >
       <VStack w="100%">
         {
-          herosGroups.map((group, index) => (
+          formattedGroups.map((group, index) => (
             <GroupButton 
               group={group} 
               onClick={handleChangeGroup} 

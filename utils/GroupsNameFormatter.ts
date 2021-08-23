@@ -1,13 +1,16 @@
-export function GroupsNameFormatter(array : Array<any>){
-  const OnceOfArrayDataUnformatted = [];
+import { HomeHerosType } from "../types/HomeHerosType";
 
-  array.forEach(item => {
-    if(!OnceOfArrayDataUnformatted.includes(item)){
-      OnceOfArrayDataUnformatted.push(item)
+export function GroupsNameFormatter(array : HomeHerosType[]) : string[]{
+
+  const allGroups = array.map(hero => hero.group);
+
+  const FormattedGroups = [];
+
+  allGroups.forEach(item => {
+    if(!FormattedGroups.includes(item)){
+      FormattedGroups.push(item)
     }
     })
 
-  const OnceOfArrayData = OnceOfArrayDataUnformatted.map(item => item.split("-").join(" "))
-
-  return OnceOfArrayData
+  return FormattedGroups
 }
