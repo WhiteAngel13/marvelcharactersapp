@@ -1,7 +1,5 @@
 import { Center, Flex, HStack, Text, Box, Avatar } from "@chakra-ui/react";
 import { useHomeApplication } from "../../../hooks/HomeApplication";
-import { HomeHerosType } from "../../../types/HomeHerosType";
-import { Slider } from "../Slider";
 
 export function MainContent(){
 
@@ -77,7 +75,7 @@ export function MainContent(){
             <Text
               m="10px"
               fontSize="16px"
-              color="#ccc"
+              color="#ccc "
             >
               {heroData.description}
             </Text>            

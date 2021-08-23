@@ -1,6 +1,5 @@
 import { Center, Flex, Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { useSlider } from "../../../hooks/useSlider";
 import {SliderArrowButton} from "./SliderArrowButton"
 
 
