@@ -1,0 +1,42 @@
+[
+  {
+    "nome": "Iron Man",
+    "image": "https://upload.wikimedia.org/wikipedia/pt/b/be/Invincible_Iron_Man_Vol_2_2.jpg"
+  },
+  {
+    "nome": "Hulk",
+    "image": "https://kanto.legiaodosherois.com.br/w760-h398-gnw-cfill-q80/wp-content/uploads/2020/06/legiao_EKohXa0I3ZHj.jpg"
+  },
+  {
+    "nome": "Spider Man",
+    "image": "https://i2.wp.com/cloud.estacaonerd.com/wp-content/uploads/2020/12/08180639/live-action-aranhaverso.png?fit=1080%2C720&ssl=1"
+  },
+  {
+    "nome": "Ghost Rider",
+    "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/0/0e/Motoqueiro_Fantasma_por_Mark_Texeira.jpg/260px-Motoqueiro_Fantasma_por_Mark_Texeira.jpg"
+  },
+  {
+    "nome": "Captain America",
+    "image":"https://cf-images.us-east-1.prod.boltdns.net/v1/static/5359769168001/0a823cb0-01a9-4835-a348-c64187783ccb/d37cb96c-805c-4aa2-9f2f-e62d9eb814c7/1280x720/match/image.jpg" 
+  },
+  {
+    "nome": "Black Panther",
+    "image":"https://images.theconversation.com/files/210053/original/file-20180313-30975-lnv556.jpg" 
+  },
+  {
+    "nome": "Black Widow",
+    "image":"https://cdn.pocket-lint.com/r/s/1200x630/assets/images/156367-tv-news-feature-every-marvel-movie-and-show-to-watch-before-black-widow-image10-9lcwr2ywcm.jpg" 
+  },
+  {
+    "nome": "Thor",
+    "image":"https://super.abril.com.br/wp-content/uploads/2017/07/thor.jpg" 
+  },
+  {
+    "nome": "Loki",
+    "image":"https://t.ctcdn.com.br/fyceDmrt7O2QG2rV0N6ap56e-RM=/1400x788/smart/i416836.jpeg" 
+  },
+  {
+    "nome": "Vision",
+    "image":"https://br.atsit.in/wp-content/uploads/2021/06/o-contrato-da-marvel-de-paul-bettany-expirou-e-ele-nao-sabe-se-retornara-como-vision-white-vision-em-wandavision.jpg" 
+  }
+]

@@ -15,27 +15,35 @@ export function useSlider ({
     move : "left" | "right",
   ) => {
 
+    const constant = move === "left" ? 4 : 1
+
+    const leftDistance = SliderCardActive - constant 
+    const rightDistance = listLength - leftDistance
+    const weAreIn = leftDistance < rightDistance ? "left" : "right"
+
+    console.log(leftDistance, rightDistance)
     if(move === "left"){
-      if(SliderInMovement <= 0){
-        setSliderInMovement(0)
-      }else {
-        setSliderInMovement(old => old - 1)
+      
+      if(weAreIn === "left"){
+        setSliderInMovement(Math.min(leftDistance, rightDistance))
+      }else{
+        setSliderInMovement(Math.max(leftDistance, rightDistance))
       }
 
       if(SliderCardActive >= 1){
-        setSliderCardActive(old => old - 1)
-        console.log(SliderCardActive)
-      }
-    }else{
-      
-      if(SliderInMovement >= listLength-6){
-        setSliderInMovement(listLength-6)
-      }else{
-        setSliderInMovement(old => old + 1)
+        setSliderCardActive(old => old-1)
       }
 
-      if(SliderCardActive < listLength-1){
-        setSliderCardActive(old => old + 1)
+    }else{
+
+      if(weAreIn === "left"){
+        setSliderInMovement(Math.min(leftDistance, rightDistance))
+      }else{
+        setSliderInMovement(Math.max(leftDistance, rightDistance))
+      }
+
+      if(SliderCardActive < listLength - 1){
+        setSliderCardActive(old => old+1)
       }
     }
   }
@@ -54,7 +62,7 @@ export function useSlider ({
 
   return {
     moveTo,
-    SliderInMovement,
+    setSliderCardActive,
     SliderCardActive,
     movementInPx
   }
