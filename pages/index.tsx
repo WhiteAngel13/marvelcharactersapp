@@ -10,7 +10,7 @@ import { HomeHerosType } from "../types/HomeHerosType"
 import { NameFormatter } from "../utils/NameFormatter"
 import { useState } from "react"
 import { Button } from "@chakra-ui/react"
-import { OnceOfArrayData } from "../utils/OnceOfArrayData"
+import { GroupsNameFormatter } from "../utils/GroupsNameFormatter"
 
 interface HomeProps {
   herosData : HomeHerosType[];
@@ -32,6 +32,7 @@ export default function Home({
 
   return (
    <HomeApplicationArea>
+     <Button bg="red" width="20px" h="20px" zIndex="10" onClick={()=>{setGroupShow("avengers")}} />
      <BackgroundImageAnimation/> 
      <ContentApplication>
        <Sidebar herosGroups={groupsFormatted} setGroup={handleSetGroup} />
@@ -60,9 +61,8 @@ export const getServerSideProps : GetServerSideProps = async () => {
 
   });
 
-  const groupsFormatted = OnceOfArrayData(allgroupsUnfformated)
+  const groupsFormatted = GroupsNameFormatter(allgroupsUnfformated)
 
-  console.log(groupsFormatted)
 
   return {
     props: {

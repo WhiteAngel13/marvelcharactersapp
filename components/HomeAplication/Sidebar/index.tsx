@@ -1,4 +1,6 @@
 import { Center, Flex, Box, VStack } from "@chakra-ui/react";
+import { useState } from "react";
+import { GroupButton } from "./GroupButton";
 
 interface SidebarProps{
   herosGroups: string[];
@@ -9,13 +11,31 @@ export function Sidebar({
   herosGroups,
   setGroup
 } : SidebarProps){
+
+  const [activeButton, setActiveButton] = useState(0);
+
+  function handleChangeGroup(group: string, index: number){
+    setGroup(group.split(" ").join("-"))
+    setActiveButton(index)
+  }
+  
   return(
     <Center
       w="15%"
       h="100%"
     >
       <VStack w="100%">
-        {herosGroups.map(group => <Center onClick={() => setGroup(group)} w="100%" h="50px" bg="red" key={group} >{group}</Center>)}
+        {
+          herosGroups.map((group, index) => (
+            <GroupButton 
+              group={group} 
+              onClick={handleChangeGroup} 
+              index={index}
+              key={group}
+              {...index === activeButton ? {isActive : true} : null}
+            />
+          ))
+        }
       </VStack>
     </Center>
   )
