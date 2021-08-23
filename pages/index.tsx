@@ -32,7 +32,6 @@ export default function Home({
 
   return (
    <HomeApplicationArea>
-     <Button bg="red" width="20px" h="20px" zIndex="10" onClick={()=>{setGroupShow("avengers")}} />
      <BackgroundImageAnimation/> 
      <ContentApplication>
        <Sidebar herosGroups={groupsFormatted} setGroup={handleSetGroup} />
@@ -54,6 +53,8 @@ export const getServerSideProps : GetServerSideProps = async () => {
     
     if(hero.name.length > 11){
       hero.nameFormatted = NameFormatter(hero.name);
+    }else{
+      hero.nameFormatted = hero.name
     }
 
     allgroupsUnfformated.push(hero.group)

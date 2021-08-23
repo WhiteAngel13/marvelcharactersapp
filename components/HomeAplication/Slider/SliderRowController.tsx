@@ -27,7 +27,7 @@ export function SliderRowController({
       {
         herosData.map((item, index)=>(
           <SliderCard
-            heroName={item.name}
+            heroName={item.nameFormatted}
             image={item.thumbnail}
             key={item.name}
             index={index}

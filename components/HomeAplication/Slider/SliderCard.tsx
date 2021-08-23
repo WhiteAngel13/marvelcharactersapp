@@ -43,6 +43,8 @@ export function SliderCard({
 
         fontSize="15px"
         fontWeight="bold"
+
+        textTransform="capitalize"
       >
         {heroName}
       </Text>
