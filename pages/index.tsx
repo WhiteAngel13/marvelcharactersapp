@@ -22,7 +22,9 @@ export default function Home({
   groupsFormatted
 }:HomeProps) {
 
-  const [groupToShow, setGroupShow] = useState("spider-man")
+  const slugFormattedFirstGroup = groupsFormatted[0].split(" ").join("-")
+
+  const [groupToShow, setGroupShow] = useState(slugFormattedFirstGroup)
 
   const herosDataFormatted = herosData.filter(hero => hero.group === groupToShow)
 
@@ -35,8 +37,8 @@ export default function Home({
      <BackgroundImageAnimation/> 
      <ContentApplication>
        <Sidebar herosGroups={groupsFormatted} setGroup={handleSetGroup} />
-       <MainContent/>
        <Slider herosData={herosDataFormatted} />
+       <MainContent heroData={herosDataFormatted[0]} />
      </ContentApplication>
    </HomeApplicationArea>
   )

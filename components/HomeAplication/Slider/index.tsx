@@ -9,7 +9,7 @@ interface SliderProps {
 }
 
 export function Slider({
-  herosData
+  herosData,
 }:SliderProps){
   
   const {

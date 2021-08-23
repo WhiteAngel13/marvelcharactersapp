@@ -1,4 +1,4 @@
-import { Box, usePrefersReducedMotion } from "@chakra-ui/react";
+import { Box, Center, usePrefersReducedMotion } from "@chakra-ui/react";
 import { breath } from "../../styles/Animations";
 
 export function BackgroundImageAnimation(){
@@ -8,7 +8,7 @@ export function BackgroundImageAnimation(){
 
 
   return(
-    <Box
+    <Center
       position="absolute"
       top="0"
       right="0"
@@ -23,6 +23,16 @@ export function BackgroundImageAnimation(){
 
       animation={animation}
 
-    />    
+    >
+      <Box 
+        w="45%" 
+        h="200%" 
+        bg="#00000099"
+        transform="auto"
+
+        rotate="-35deg"
+        translateX="-5%"
+      />
+    </Center>
   )
 }
