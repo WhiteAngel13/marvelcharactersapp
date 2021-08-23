@@ -1,55 +1,30 @@
-import { Flex } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { Flex, list } from "@chakra-ui/react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useSlider } from "../../../../hooks/useSlider"
 import { SliderCard } from "./SliderCard"
 
 interface SliderRowControllerProps {
-  herosData: string[]
-  move: "left" | "right"
+  herosData: string[],
+  movementInPx: number,
+  SliderCardActive: number
 }
 
 export function SliderRowController({
   herosData,
-  move
+  SliderCardActive,
+  movementInPx
 }:SliderRowControllerProps){
 
-  const [SliderCardActive, setSliderCardActive] = useState(0)
-  
-  const convertToPx = (id:number) => {
-    if(id <= 0){
-      return 0
-    }else if (id >= herosData.length-1 )  {
-      return -((herosData.length-5) * 160)
-    }else{
-      return -((id-5) * 160)
-    }
-  }
-
-  console.log(SliderCardActive)
-
-  useEffect(()=>{
-    if(move === "left"){
-      if(SliderCardActive <= 0){
-        setSliderCardActive(0)
-      }else{
-        setSliderCardActive(old => old - 1)
-      }
-    }else{
-      if(SliderCardActive >= herosData.length-1){
-        setSliderCardActive(herosData.length-5)
-      }else{
-        setSliderCardActive(old => old+1)
-      }
-    }
-  }, [move])
-
-
-
   return(
-    <Flex transform="auto" translateX={convertToPx(SliderCardActive)}>
+    <Flex transform="auto" translateX={movementInPx}>
       {
-        herosData.map(item=>(
-          <SliderCard heroName={item} key={item} />
-        ))
+        herosData.map((item, index)=>{
+          if(index === SliderCardActive){
+            return <SliderCard heroName={item} key={item} isActive />
+          }else{
+            return <SliderCard heroName={item} key={item} />
+          }
+        })
       }
     </Flex>
   )

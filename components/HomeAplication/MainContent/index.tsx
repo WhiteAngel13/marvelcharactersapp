@@ -11,7 +11,7 @@ export function MainContent(){
       flexDir="column"
       position="relative"
     >
-      <Flex bg="yellow" flex="1">
+      <Flex flex="1">
         dqospkadowpodkwkpwaokdwaopawdkopawdkaopdwkdoapwdawopk
       </Flex>
     </Flex>

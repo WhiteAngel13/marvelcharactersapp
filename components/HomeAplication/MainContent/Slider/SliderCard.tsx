@@ -23,6 +23,8 @@ export function SliderCard({
       justify="flex-end"
       color={`${isActive ? "#ffffff" : "#222222"}cc`}
 
+      transition="all ease 1s"
+
       _hover={{
         color: "#ccc",
         borderColor: "#ccc"
