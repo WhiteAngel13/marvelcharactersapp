@@ -16,12 +16,14 @@ export function Slider({
     moveTo,
     SliderCardActive,
     setSliderCardActive,
+    setSliderInMovement,
     movementInPx,
   } = useSlider({ listLength:herosData.length })
 
   useEffect(()=>{
     setSliderCardActive(0)
-  }, [herosData])
+    setSliderInMovement(0)
+  }, [herosData, setSliderCardActive, setSliderInMovement])
   
   return(
     <SliderFrame moveTo={moveTo}>
