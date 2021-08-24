@@ -1,4 +1,13 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useCallback, useContext, useMemo, useState } from "react";
+import { 
+  createContext, 
+  Dispatch, 
+  ReactNode, 
+  SetStateAction, 
+  useContext, 
+  useMemo, 
+  useState 
+} from "react";
+
 import { HomeHerosType } from "../../types/HomeHerosType";
 import { GroupsNameFormatter } from "../../utils/GroupsNameFormatter";
 
@@ -28,22 +37,20 @@ export function HomeApplicationProvider({
   const [groupToShow, setGroupToShow] = useState(formattedGroups[0])
   
   const herosDataFiltered = useMemo(
-    ()=>herosData.filter(hero => hero.group === groupToShow), [groupToShow, herosData]
+    ()=> herosData.filter(hero =>hero.group === groupToShow), 
+    [groupToShow, herosData]
   )
 
   const [chosenHero, setChosenHero] = useState(0)
   const chosenHeroData = herosDataFiltered[chosenHero]
+  
   const listLength = herosDataFiltered.length
-
-
-
 
   const value = {
     formattedGroups,
     setGroupToShow,
     herosDataFiltered,
     listLength,
-    chosenHero,
     setChosenHero,
     chosenHeroData
   }

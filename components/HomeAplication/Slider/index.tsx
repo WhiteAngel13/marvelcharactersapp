@@ -1,6 +1,5 @@
 import { SliderFrame } from "./SliderFrame";
 import { SliderRowController } from "./SliderRowController";
-import { HomeHerosType } from "../../../types/HomeHerosType"
 import { useEffect } from "react";
 import { useHomeApplication } from "../../../hooks/HomeApplication";
 import { useSlider } from "../../../hooks/HomeApplication/SliderController";

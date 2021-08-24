@@ -1,4 +1,4 @@
-import { Flex, Text, Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useHomeApplication } from "../../../hooks/HomeApplication";
 import { LeftSide } from "./LeftSide";
 import { DescriptionBox } from "./LeftSide/DescriptionBox";

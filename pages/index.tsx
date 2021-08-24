@@ -1,9 +1,13 @@
 import { GetServerSideProps } from "next"
-import { BackgroundImageAnimation } from "../components/HomeAplication/BackgroundImageAnimation"
-import { ContentApplication } from "../components/HomeAplication/ContentApplication"
-import { HomeApplicationArea } from "../components/HomeAplication/HomeApplicationArea"
-import { db } from "../services/firebase"
+
+import { 
+  HomeApplicationArea,
+  BackgroundImageAnimation,
+  ContentApplication,
+} from "../components/HomeAplication"
+
 import { HomeHerosType } from "../types/HomeHerosType"
+import { db } from "../services/firebase"
 
 interface HomeProps {
   herosData : HomeHerosType[];

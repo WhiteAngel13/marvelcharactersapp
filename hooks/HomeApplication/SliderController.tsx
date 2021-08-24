@@ -1,11 +1,14 @@
-import { useState, Dispatch, SetStateAction, createContext, useContext } from "react";
+import { 
+  useState, 
+  Dispatch, 
+  SetStateAction, 
+  createContext, 
+  useContext 
+} from "react";
+
 import { useHomeApplication } from ".";
 
-interface SliderControllerProps {
-  listLength: number
-}
-
-interface SliderControllerReturn {
+interface SliderContext {
   moveTo: (move : "left" | "right") => void,
   setSliderCardActive: Dispatch<SetStateAction<number>>,
   setSliderInMovement: Dispatch<SetStateAction<number>>,
@@ -13,9 +16,7 @@ interface SliderControllerReturn {
   movementInPx: number
 }
 
-export type SliderController = ({}: SliderControllerProps) => SliderControllerReturn
-
-const SliderContext = createContext({} as SliderControllerReturn)
+const SliderContext = createContext({} as SliderContext)
 
 export const SliderProvider = ({children}) => {
 
