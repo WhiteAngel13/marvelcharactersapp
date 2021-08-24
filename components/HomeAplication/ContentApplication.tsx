@@ -1,5 +1,4 @@
 import { Flex, } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { Sidebar } from "./Sidebar";
 import { Slider } from "./Slider";
 import { MainContent } from "./MainContent";

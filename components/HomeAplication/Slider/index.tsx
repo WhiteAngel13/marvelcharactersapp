@@ -24,7 +24,7 @@ export function Slider(){
   useEffect(()=>{
     const chosenHero = SliderCardActive
     setChosenHero(chosenHero)
-  }, [SliderCardActive])
+  }, [SliderCardActive, setChosenHero])
 
   useEffect(()=>{
     setSliderCardActive(0)

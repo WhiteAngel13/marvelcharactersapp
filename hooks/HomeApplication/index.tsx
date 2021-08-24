@@ -26,7 +26,11 @@ export function HomeApplicationProvider({
 
   const [formattedGroups] = useState(GroupsNameFormatter(herosData))
   const [groupToShow, setGroupToShow] = useState(formattedGroups[0])
-  const herosDataFiltered = useMemo(()=>herosData.filter(hero => hero.group === groupToShow), [groupToShow])
+  
+  const herosDataFiltered = useMemo(
+    ()=>herosData.filter(hero => hero.group === groupToShow), [groupToShow, herosData]
+  )
+
   const [chosenHero, setChosenHero] = useState(0)
   const chosenHeroData = herosDataFiltered[chosenHero]
   const listLength = herosDataFiltered.length
