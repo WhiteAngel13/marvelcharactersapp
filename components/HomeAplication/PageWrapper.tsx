@@ -1,13 +1,14 @@
 import { Box } from "@chakra-ui/react"
 import { ReactNode } from "react"
+import { BackgroundImageAnimation } from "./BackgroundImageAnimation"
 
-interface HomeApplicationArea{
+interface PageWrapperProps{
   children: ReactNode;
 }
 
-export function HomeApplicationArea({
+export function PageWrapper({
   children
-}: HomeApplicationArea){
+}: PageWrapperProps){
 
   return(
     <Box
@@ -17,6 +18,7 @@ export function HomeApplicationArea({
       position="relative"
       overflow="hidden"
     >
+      <BackgroundImageAnimation/>
       {children}
     </Box>
   )

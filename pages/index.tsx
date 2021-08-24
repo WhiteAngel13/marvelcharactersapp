@@ -1,8 +1,7 @@
-import { GetServerSideProps } from "next"
+import { GetServerSideProps, GetStaticProps } from "next"
 
 import { 
-  HomeApplicationArea,
-  BackgroundImageAnimation,
+  PageWrapper,
   ContentApplication,
 } from "../components/HomeAplication"
 
@@ -18,14 +17,13 @@ export default function Home({
 }:HomeProps) {
 
   return (
-   <HomeApplicationArea>
-     <BackgroundImageAnimation/> 
+   <PageWrapper> 
      <ContentApplication herosData={herosData} />
-   </HomeApplicationArea>
+   </PageWrapper>
   )
 }
 
-export const getServerSideProps : GetServerSideProps = async () => {
+export const getStaticProps : GetStaticProps = async () => {
 
   const herosData : HomeHerosType[] = [];
 
@@ -35,6 +33,7 @@ export const getServerSideProps : GetServerSideProps = async () => {
   return {
     props: {
       herosData,
-    }
+    },
+    revalidate: 60 * 60 * 24 * 30 //30 days
   }
 }

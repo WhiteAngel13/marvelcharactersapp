@@ -77,10 +77,13 @@ const SliderCardFrame = ({
       h="100%"
       mx="20px"
 
+      cursor="pointer"
+
       userSelect="none"
 
       flexDirection="column"
-      border={`5px solid ${isActive ? "#ccc" : "#222"}`}
+      border={`5px solid`}
+      borderColor={`${isActive ? "#ccc" : "#222"}`}
       borderRadius="10px"
 
       justify="flex-end"

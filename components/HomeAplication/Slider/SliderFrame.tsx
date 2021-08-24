@@ -23,9 +23,10 @@ export function SliderFrame({
       p="8px"
 
       transition="all ease 1s"
-
       position="absolute"
       bottom="0"
+
+      zIndex="20"
     >
       <Box h="100%" position="relative">
         <SliderArrowButton 
