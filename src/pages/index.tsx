@@ -1,12 +1,12 @@
-import { GetServerSideProps, GetStaticProps } from "next"
+import { GetStaticProps } from "next"
 
 import { 
-  PageWrapper,
-  ContentApplication,
+  HomeApplication
 } from "../components/HomeAplication"
 
 import { HomeHerosType } from "../types/HomeHerosType"
 import { db } from "../services/firebase"
+import { PageWrapper } from "../components/Global/PageWrapper"
 
 interface HomeProps {
   herosData : HomeHerosType[];
@@ -18,7 +18,7 @@ export default function Home({
 
   return (
    <PageWrapper overflow="hidden"> 
-     <ContentApplication herosData={herosData} />
+     <HomeApplication herosData={herosData} />
    </PageWrapper>
   )
 }

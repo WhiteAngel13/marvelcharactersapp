@@ -84,8 +84,25 @@ Agora eu tenho a Dashboard dos meus sonhos, mas ainda tenho muita coisa para faz
 
 [ ] - Criar a Página de Apresentação do personagem
 [ ] - Utilizar os conceitos de Static Site Generation
-[ ] - Criar um sistema de consumo para o resto da API
+---
+## Criar a Página de Apresentação do personagem
+
+Ingênuo eu sou...achando que agora tudo ia melhorar, e que eu simplesmente teria que desenhar uma página simples para o personagem e colocar os dados, HA, HA, HA... algo fácil na vida de programador Front-End? só o Next mesmo kkk
+
+Passei um sufoco quando eu notei que cada Gibi que vem na API tem que ser colocado em uma nova requisição....ah meu santinho, e ainda tem que ser tratado individualmente para ficar de uma forma fácil de consumir.....triste estou, mas, vamos lá...se vocês olharem na pasta Utils, as funções de Formatação, vão ver a lindeza que foi formatar esses dados, mas depois de formatados, foi molezinha, coloca tudo na tela e usa o GetStaticProps para deixar tudo estático.....uma vez feito isso, agora é só curtir a vida e marcar os dois de uma vez só!
+
+[x] - Criar a Página de Apresentação do personagem
+[x] - Utilizar os conceitos de Static Site Generation
 
 ---
 
-Ou seja, por enquanto o projeto parou aqui, e só escrever isso tudo já me deu um ar muito bacana do que eu posso fazer para as outras páginas, se leu até aqui, muito obrigado e....Bom dia/tarde/noite!
+# Considerações Finais
+
+- Dicas de uso
+- Minhas impressões do projeto
+
+Cara, nessas dicas, eu só queria dizer que....dá para clicar no cardzin que se mexe no Dashboard, mesmo com o cursor pointer e ele sendo bem chamativo, é sempre bom avisar, e....como no código que eu escrevi, cada personagem faz em média 40 requisições, então, caso uma página dê erro 404 é por que meu limite de uso da API da marvel estourou hehehe
+
+E sobre o Projeto, foi meu primeiro assim feito em tão pouco tempo e que.....eu admito ter me orgulhado tanto, eu ainda colocaria bem mais coisas nele, mas para um projeto simples de apresentação de habilidades para conseguir a vaga de emprego, espero que tenha conseguido mostrar o suficiente, espero que gostem da organização do meu código, e claro, estou sempre disposto a aprender coisas novas e novas formas de trabalhar em time... espero que gostem!!!!
+
+Nota: Estou aprendendo Node.JS para o Backend, daqui a pouco vou poder servir nessa área também! abraço! fuiiiiii...

@@ -12,7 +12,7 @@ interface ContentApplicationProps {
   herosData: HomeHerosType[]
 }
 
-export function ContentApplication({ herosData } : ContentApplicationProps){
+export function HomeApplication({ herosData } : ContentApplicationProps){
 
   return(
     <HomeApplicationProvider herosData={herosData}>

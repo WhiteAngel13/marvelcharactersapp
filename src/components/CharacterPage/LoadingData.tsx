@@ -1,5 +1,5 @@
 import { Center, Spinner, Text } from "@chakra-ui/react";
-import { PageWrapper } from "../HomeAplication";
+import { PageWrapper } from "../Global/PageWrapper";
 import { ContentArea } from "./ContentArea";
 
 

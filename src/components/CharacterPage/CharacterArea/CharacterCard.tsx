@@ -1,5 +1,5 @@
 import { Center } from "@chakra-ui/react";
-import { ImageBox } from "../Global/ImageBox";
+import { ImageBox } from "../../Global/ImageBox";
 
 interface CharacterCardProps{
   id: number

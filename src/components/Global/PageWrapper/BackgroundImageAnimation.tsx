@@ -1,5 +1,5 @@
 import { Box, Center, usePrefersReducedMotion } from "@chakra-ui/react";
-import { breath } from "../../styles/Animations";
+import { breath } from "../../../styles/Animations";
 
 export function BackgroundImageAnimation(){
 
