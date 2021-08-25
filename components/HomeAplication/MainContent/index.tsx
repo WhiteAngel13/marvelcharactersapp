@@ -5,7 +5,7 @@ import { DescriptionBox } from "./LeftSide/DescriptionBox";
 import { GroupBox } from "./LeftSide/GroupBox";
 import { NameBox } from "./LeftSide/NameBox";
 import { RightSide } from "./RightSide";
-import { ImageBox } from "./RightSide/ImageBox";
+import { ImageBox } from "../../Global/ImageBox";
 
 export function MainContent(){
 
@@ -26,8 +26,10 @@ export function MainContent(){
       </LeftSide>
       <RightSide>
         <ImageBox 
+          h="70%" w="60%" mt="10%"
           heroImage={heroData?.thumbnail} 
           heroName={heroData?.name}
+          heroId={heroData?.id}
         />
       </RightSide>
     </Flex>

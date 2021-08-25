@@ -1,13 +1,14 @@
-import { Box } from "@chakra-ui/react"
+import { Box, BoxProps, Flex } from "@chakra-ui/react"
 import { ReactNode } from "react"
 import { BackgroundImageAnimation } from "./BackgroundImageAnimation"
 
-interface PageWrapperProps{
+interface PageWrapperProps extends BoxProps{
   children: ReactNode;
 }
 
 export function PageWrapper({
-  children
+  children,
+  ...rest
 }: PageWrapperProps){
 
   return(
@@ -16,10 +17,18 @@ export function PageWrapper({
       width="100%"
       height="100vh"
       position="relative"
-      overflow="hidden"
+      {...rest}
     >
       <BackgroundImageAnimation/>
-      {children}
+      <Flex
+      position="absolute"
+      top="0"
+      right="0"
+      left="0"
+      bottom="0"
+      >
+        {children}
+      </Flex>
     </Box>
   )
 }

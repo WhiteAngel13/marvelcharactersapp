@@ -6,7 +6,6 @@ export function BackgroundImageAnimation(){
   const prefersReducedMotion = usePrefersReducedMotion()
   const animation = prefersReducedMotion ? undefined : `${breath} 60s infinite alternate`;
 
-
   return(
     <Center
       position="absolute"
@@ -33,6 +32,7 @@ export function BackgroundImageAnimation(){
         rotate="-35deg"
         translateX="-5%"
       />
+        {}
     </Center>
   )
 }

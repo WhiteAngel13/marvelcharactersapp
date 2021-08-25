@@ -15,3 +15,11 @@ export const api = axios.create({
   }
 })
 
+export const apiPure = axios.create({
+  params:{
+    ts,
+    apikey,
+    hash
+  }
+})
+

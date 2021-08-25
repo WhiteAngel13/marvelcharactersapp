@@ -1,39 +1,36 @@
 import { Flex, Text } from "@chakra-ui/react";
-import Tilt from "react-parallax-tilt"
+import { StyledTilt } from "./StyledTilt"
+import Router from "next/router"
 
 interface ImageBoxProps{
   heroName: string,
   heroImage: string
+  heroId: number
+
+  h: string,
+  w: string,
+  mt?: string,
 }
 
 export function ImageBox({
   heroImage,
-  heroName
+  heroName,
+  heroId,
+  h,
+  mt = "0",
+  w
 }:ImageBoxProps){
 
+  function handleGoToInfoPage(){
+    Router.push(`/character/${heroId}`)
+  }
+
   return(
-    <Tilt
-      style={{
-        display: "flex",
-        flexDirection: "column",
-
-        border: "#222 solid 10px",
-        borderRadius: "10px",
-
-        marginTop:"10%",
-        height:"70%",
-        width: "60%",
-
-        backgroundColor:"#222222cc",
-
-        userSelect:"none",
-        
-        cursor: "pointer"
-      }}
-
-      tiltReverse
+    <StyledTilt
+      h={h} w={w} mt={mt}
     >
-      <Flex 
+      <Flex
+        onClick={handleGoToInfoPage}
         flex="3"
         bgImage={heroImage}
         bgSize="cover"
@@ -48,6 +45,6 @@ export function ImageBox({
           {heroName}
         </Text>
       </Flex>
-    </Tilt>
+    </StyledTilt>
   )
 }

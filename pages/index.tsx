@@ -17,7 +17,7 @@ export default function Home({
 }:HomeProps) {
 
   return (
-   <PageWrapper> 
+   <PageWrapper overflow="hidden"> 
      <ContentApplication herosData={herosData} />
    </PageWrapper>
   )

@@ -15,20 +15,12 @@ interface ContentApplicationProps {
 export function ContentApplication({ herosData } : ContentApplicationProps){
 
   return(
-    <Flex
-      position="absolute"
-      top="0"
-      right="0"
-      left="0"
-      bottom="0"
-    >
-     <HomeApplicationProvider herosData={herosData}>
+    <HomeApplicationProvider herosData={herosData}>
       <SliderProvider>
         <Sidebar />
         <Slider />
         <MainContent />
       </SliderProvider>
-     </HomeApplicationProvider>
-    </Flex>    
+    </HomeApplicationProvider>
   )
 }
