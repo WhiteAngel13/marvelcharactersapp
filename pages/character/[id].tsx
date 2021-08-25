@@ -24,12 +24,12 @@ export const getStaticPaths : GetStaticPaths = async (ctx) => {
 
   const paths = herosData.map(hero => {
     return {
-      params: {id: hero.id}
+      params: {id: String(hero.id)}
     }
   })
 
   return {
-    paths:[],
+    paths,
     fallback: "blocking"
   }
 }
