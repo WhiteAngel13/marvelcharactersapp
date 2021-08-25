@@ -15,24 +15,24 @@ interface CharacterPageProps {
   heroData: CharacterData
 }
 
-export const getStaticPaths : GetStaticPaths = async (ctx) => {
+// export const getStaticPaths : GetStaticPaths = async (ctx) => {
 
-  const herosData : HomeHerosType[] = [];
+//   const herosData : HomeHerosType[] = [];
 
-  const response = await db.collection("Home_Heros_Data").get()
-  response.forEach(item => herosData.push(item.data() as HomeHerosType))
+//   const response = await db.collection("Home_Heros_Data").get()
+//   response.forEach(item => herosData.push(item.data() as HomeHerosType))
 
-  const paths = herosData.map(hero => {
-    return {
-      params: {id: String(hero.id)}
-    }
-  })
+//   const paths = herosData.map(hero => {
+//     return {
+//       params: {id: String(hero.id)}
+//     }
+//   })
 
-  return {
-    paths,
-    fallback: "blocking"
-  }
-}
+//   return {
+//     paths,
+//     fallback: "blocking"
+//   }
+// }
 
 export default function CharacterPage ({
   heroData
@@ -71,21 +71,24 @@ export default function CharacterPage ({
   )
 }
 
-export const getStaticProps : GetStaticProps = async(ctx) => {
+export const getServerSideProps : GetServerSideProps = async(ctx) => {
 
   const { id } = ctx.params;
 
   try {
     const { data } = await api.get(`characters/${id}`)
 
+
     const heroData = await PageCharacter_HeroDataFormatter(data.data.results[0]);
 
     return {
       props:{
         heroData
-      }
+      },
     }
   }catch (err){
+
+
     return {
       notFound: true
     }
