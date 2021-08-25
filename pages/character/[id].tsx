@@ -9,6 +9,8 @@ import { CharacterDescription } from "../../components/CharacterPage/CharacterDe
 import { CharacterCard } from "../../components/CharacterPage/CharacterCard";
 import { PageCharacter_HeroDataFormatter } from "../../utils/PageCharacter_HeroDataFormatter";
 import { api } from "../../services/api";
+import { useRouter } from "next/router";
+import { LoadingData } from "../../components/CharacterPage/LoadingData";
 
 
 interface CharacterPageProps {
@@ -19,13 +21,21 @@ export const getStaticPaths : GetStaticPaths = async (ctx) => {
 
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: true,
   }
 }
 
 export default function CharacterPage ({
   heroData
 } : CharacterPageProps){
+
+  const Router = useRouter()
+
+  if(Router.isFallback){
+    return(
+      <LoadingData/>
+    )
+  }
 
   const { 
     id, 
