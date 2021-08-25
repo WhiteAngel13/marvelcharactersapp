@@ -32,7 +32,7 @@ export function BackgroundImageAnimation(){
         rotate="-35deg"
         translateX="-5%"
       />
-        {}
+
     </Center>
   )
 }

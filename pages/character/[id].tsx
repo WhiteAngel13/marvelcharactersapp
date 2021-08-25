@@ -1,14 +1,14 @@
-import { Box, Center, Flex } from "@chakra-ui/react";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import { PageLimitator } from "../../components/CharacterPage/PageLimitator";
+import { Flex } from "@chakra-ui/react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { PageWrapper } from "../../components/HomeAplication";
-import { ImageBox } from "../../components/Global/ImageBox";
-import { api } from "../../services/api";
 import { CharacterData } from "../../types/CharacterDataTypes"
-import { PageCharacter_HeroDataFormatter } from "../../utils/PageCharacter_HeroDataFormatter";
 import { SectionOfPage } from "../../components/CharacterPage/SectionOfPage";
-import { db } from "../../services/firebase";
-import { HomeHerosType } from "../../types/HomeHerosType";
+import { ContentArea } from "../../components/CharacterPage/ContentArea";
+import { CharacterArea } from "../../components/CharacterPage/CharacterArea";
+import { CharacterDescription } from "../../components/CharacterPage/CharacterDescription";
+import { CharacterCard } from "../../components/CharacterPage/CharacterCard";
+import { PageCharacter_HeroDataFormatter } from "../../utils/PageCharacter_HeroDataFormatter";
+import { api } from "../../services/api";
 
 
 interface CharacterPageProps {
@@ -17,20 +17,9 @@ interface CharacterPageProps {
 
 export const getStaticPaths : GetStaticPaths = async (ctx) => {
 
-  const herosData : HomeHerosType[] = [];
-
-  const response = await db.collection("Home_Heros_Data").get()
-  response.forEach(item => herosData.push(item.data() as HomeHerosType))
-
-  const paths = herosData.map(hero => {
-    return {
-      params: {id: String(hero.id)}
-    }
-  })
-
   return {
-    paths,
-    fallback: "blocking"
+    paths: [],
+    fallback: "blocking",
   }
 }
 
@@ -38,38 +27,41 @@ export default function CharacterPage ({
   heroData
 } : CharacterPageProps){
 
+  const { 
+    id, 
+    name, 
+    description, 
+    thumbnail,
+    comics,
+    events,
+    series 
+  } = heroData
+
   return(
     <PageWrapper overflow="hidden">
-      <Flex flex="1" overflow="auto">
-      <PageLimitator>
-          <Flex
-            bg="pink.200"
-            minH="600px"
-            w="100%"
-            flexDir="row"
-          >
-            <Flex flex="3" bg="blue">
-
-            </Flex>
-            <Center flex="2">
-              <ImageBox
-                h="70%" w="70%"
-                heroId={heroData.id}
-                heroImage={heroData.thumbnail}
-                heroName={heroData.name}
-              />
-            </Center>
-          </Flex>
+      <ContentArea>
+          <CharacterArea>
+            <CharacterDescription
+              name={name}
+              description={description}
+            />
+            <CharacterCard 
+              id={id}
+              name={name}
+              thumbnail={thumbnail}
+            />
+          </CharacterArea>
           <Flex flexDir="column">
-            <SectionOfPage title="Comics" data={heroData.comics} />
-            <SectionOfPage title="Events" data={heroData.events} />
-            <SectionOfPage title="Series" data={heroData.series} />
+            <SectionOfPage title="Comics" data={comics} />
+            <SectionOfPage title="Events" data={events} />
+            <SectionOfPage title="Series" data={series} />
           </Flex>
-        </PageLimitator>
-      </Flex>
+      </ContentArea>
     </PageWrapper>
   )
 }
+
+
 
 export const getStaticProps : GetStaticProps = async(ctx) => {
 
@@ -77,8 +69,6 @@ export const getStaticProps : GetStaticProps = async(ctx) => {
 
   try {
     const { data } = await api.get(`characters/${id}`)
-
-    console.log(data)
 
     const heroData = await PageCharacter_HeroDataFormatter(data.data.results[0]);
 
@@ -89,6 +79,9 @@ export const getStaticProps : GetStaticProps = async(ctx) => {
       revalidate: 60 * 60 * 24 * 30 //30 days
     }
   }catch (err){
+
+    console.log(err)
+
     return {
       notFound: true
     }
