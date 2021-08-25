@@ -11,6 +11,8 @@ import { SectionOfPage } from "../../components/CharacterPage/SectionOfPage";
 import { ContentArea } from "../../components/CharacterPage/ContentArea";
 import { CharacterArea } from "../../components/CharacterPage/CharacterArea";
 import { LoadingData } from "../../components/CharacterPage/LoadingData";
+import { db } from "../../services/firebase";
+import { HomeHerosType } from "../../types/HomeHerosType";
 
 
 interface CharacterPageProps {
@@ -19,8 +21,17 @@ interface CharacterPageProps {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
+  const response = await db.collection("Home_Heros_Data").get()
+  const herosData : HomeHerosType[] = []
+
+  response.forEach(item => herosData.push(item.data() as HomeHerosType));
+
+  const paths = herosData.map(hero => {
+    return {params: {id : String(hero.id)}}
+  })
+
   return {
-    paths: [],
+    paths,
     fallback: true,
   }
 }
