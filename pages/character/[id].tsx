@@ -86,6 +86,7 @@ export const getStaticProps : GetStaticProps = async(ctx) => {
       props:{
         heroData
       },
+      revalidate: 60 * 60 * 24 * 30 //30 days
     }
   }catch (err){
     return {
